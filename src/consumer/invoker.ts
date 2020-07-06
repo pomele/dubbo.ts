@@ -48,10 +48,10 @@ export default class Invoker {
         dubbo: this.consumer.version,
         interface: this.interfacename,
         pid: this.consumer.pid,
-        revision: this.interfaceversion,
+        // revision: this.interfaceversion,
         side: 'consumer',
         timestamp: Date.now(),
-        version: this.interfaceversion,
+        // version: this.interfaceversion,
         group: this.interfacegroup,
       }
     }
@@ -100,9 +100,9 @@ export default class Invoker {
       const matchInterfaceGroup = (URI.query['default.grouop'] || '') === (this.interfacegroup === '-' ? '': this.interfacegroup);
       this.consumer.logger.debug('------------', URI.host, '------------');
       this.consumer.logger.debug('Match name:', matchInterfaceName, URI.query.interface, this.interfacename);
-      this.consumer.logger.debug('Match version:', matchInterfaceVersion, URI.query.version, this.interfaceversion);
+      // this.consumer.logger.debug('Match version:', matchInterfaceVersion, URI.query.version, this.interfaceversion);
       this.consumer.logger.debug('Match group:', matchInterfaceGroup, (URI.query['default.grouop'] || ''), (this.interfacegroup === '-' ? '': this.interfacegroup));
-      if (matchInterfaceName && matchInterfaceVersion && matchInterfaceGroup) result.push(URI);
+      if (matchInterfaceName && matchInterfaceGroup) result.push(URI);
     });
     this.consumer.logger.debug('[Consumer Registry]', 'find vaild service:', result.length);
     return result;

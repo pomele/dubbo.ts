@@ -115,8 +115,9 @@ export type ProviderInitOptions = {
   logger?: Logger,
 }
 
-export function getProviderServiceChunkId(interfacename: string, interfacegroup: string, interfaceversion: string) {
-  return `Service:${interfacename}#${interfacegroup}@${interfaceversion}`;
+export function getProviderServiceChunkId(interfacename: string, interfacegroup: string) {
+  // return `Service:${interfacename}#${interfacegroup}@${interfaceversion}`;
+  return `Service:${interfacename}#${interfacegroup}`;
 }
 
 function isLoopback(addr: string) {
@@ -132,7 +133,7 @@ export function heartBeatEncode(isReply?: boolean) {
   const buffer = Buffer.alloc(DUBBO_HEADER_LENGTH + 1);
   buffer[0] = DUBBO_MAGIC_HEADER >>> 8;
   buffer[1] = DUBBO_MAGIC_HEADER & 0xff;
-  buffer[2] = isReply 
+  buffer[2] = isReply
     ? HESSIAN2_SERIALIZATION_CONTENT_ID | FLAG_EVENT
     : FLAG_REQEUST | HESSIAN2_SERIALIZATION_CONTENT_ID | FLAG_TWOWAY | FLAG_EVENT;
   buffer[15] = 1;

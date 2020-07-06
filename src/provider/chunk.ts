@@ -31,7 +31,8 @@ export default class ServiceChunk<T = any> {
   }
 
   get id() {
-    return getProviderServiceChunkId(this.interfacename, this.interfacegroup, this.interfaceversion);
+    // return getProviderServiceChunkId(this.interfacename, this.interfacegroup, this.interfaceversion);
+    return getProviderServiceChunkId(this.interfacename, this.interfacegroup);
   }
 
   get host() {
@@ -61,14 +62,14 @@ export default class ServiceChunk<T = any> {
         revision: this.interfacerevision,
         side: 'provider',
         timestamp: Date.now(),
-        version: this.interfaceversion,
-        'default.group': this.interfacegroup,
-        'default.delay': this.interfacedelay,
-        'default.retries': this.interfaceretries,
-        'default.timeout': this.interfacetimout,
+        // version: this.interfaceversion,
+        group: this.interfacegroup,
+        delay: this.interfacedelay,
+        retries: this.interfaceretries,
+        timeout: this.interfacetimout,
       }
     }
-    if (obj.query['default.group'] === '-') delete obj.query['default.group'];
+    if (obj.query.group === '-') delete obj.query.group;
     const dubboInterfaceURL = url.format(obj);
     const interface_root_path = `/${this.provider.root}/${this.interfacename}`;
     const interface_dir_path = interface_root_path + '/providers';

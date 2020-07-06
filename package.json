@@ -10,6 +10,7 @@
   "scripts": {
     "server": "ts-node test/server.ts",
     "client": "ts-node test/client.ts",
+    "client_java": "ts-node test/client_use_javaProvider.ts",
     "build": "rm -rf dist/ && tsc -d"
   },
   "files": [

@@ -1,16 +1,16 @@
 import Connection from './connection';
 import * as compare from 'compare-versions';
-import { 
-  DUBBO_HEADER_LENGTH, 
-  MAGIC_HIGH, 
-  MAGIC_LOW, 
-  fromBytes4, 
-  isHeartBeat, 
-  isReplyHeart, 
-  heartBeatEncode, 
-  fromBytes8, 
-  getDubboArgumentLength, 
-  PROVIDER_CONTEXT_STATUS, 
+import {
+  DUBBO_HEADER_LENGTH,
+  MAGIC_HIGH,
+  MAGIC_LOW,
+  fromBytes4,
+  isHeartBeat,
+  isReplyHeart,
+  heartBeatEncode,
+  fromBytes8,
+  getDubboArgumentLength,
+  PROVIDER_CONTEXT_STATUS,
   DUBBO_MAGIC_HEADER,
   DUBBO_DEFAULT_PAY_LOAD,
   toBytes8,
@@ -120,7 +120,7 @@ export default class Context {
         const id = getProviderServiceChunkId(
           interfaceName,
           this.req.attachments.group || '-',
-          interfaceVersion || '0.0.0'
+          // interfaceVersion || '0.0.0'
         );
         const chunk = this.conn.provider.getChunkById(id);
         return this.conn.provider.emit('data', this, chunk);
