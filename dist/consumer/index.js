@@ -16,7 +16,7 @@ class Consumer {
     async get(interfacename, version, group) {
         group = group || '-';
         version = version || '0.0.0';
-        const id = utils_1.getProviderServiceChunkId(interfacename, group, version);
+        const id = utils_1.getProviderServiceChunkId(interfacename, group);
         if (this.storage.has(id))
             return this.storage.get(id);
         const invoker = new invoker_1.default(this, interfacename, version, group);
@@ -41,7 +41,7 @@ class Consumer {
             await this.registry.connect();
     }
     remove(invoker) {
-        const id = utils_1.getProviderServiceChunkId(invoker.interfacename, invoker.interfacegroup, invoker.interfaceversion);
+        const id = utils_1.getProviderServiceChunkId(invoker.interfacename, invoker.interfacegroup);
         if (this.storage.has(id))
             this.storage.delete(id);
     }

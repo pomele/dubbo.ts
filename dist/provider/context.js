@@ -79,7 +79,7 @@ class Context {
                     attachments,
                 };
                 this.decoded = true;
-                const id = utils_1.getProviderServiceChunkId(interfaceName, this.req.attachments.group || '-', interfaceVersion || '0.0.0');
+                const id = utils_1.getProviderServiceChunkId(interfaceName, this.req.attachments.group || '-');
                 const chunk = this.conn.provider.getChunkById(id);
                 return this.conn.provider.emit('data', this, chunk);
             }

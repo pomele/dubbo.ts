@@ -101,7 +101,7 @@ export declare type ProviderInitOptions = {
     heartbeat?: number;
     logger?: Logger;
 };
-export declare function getProviderServiceChunkId(interfacename: string, interfacegroup: string, interfaceversion: string): string;
+export declare function getProviderServiceChunkId(interfacename: string, interfacegroup: string): string;
 export declare function heartBeatEncode(isReply?: boolean): Buffer;
 export declare function toBytes4(num: number): Buffer;
 export declare function fromBytes4(buf: Buffer): number;

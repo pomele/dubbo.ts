@@ -45,7 +45,7 @@ class Channel {
                     code: 408,
                     message: 'rpc invoke timeout:' + this.timeout,
                 });
-            }, this.timeout);
+            }, 5000);
             this._rpc_callbacks.set(id, data => {
                 clearTimeout(timer);
                 this._rpc_callbacks.delete(id);

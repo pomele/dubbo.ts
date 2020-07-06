@@ -22,8 +22,8 @@ exports.localhost = Object.keys(interfaces).map(function (nic) {
     const addresses = interfaces[nic].filter(details => details.family.toLowerCase() === "ipv4" && !isLoopback(details.address));
     return addresses.length ? addresses[0].address : undefined;
 }).filter(Boolean)[0];
-function getProviderServiceChunkId(interfacename, interfacegroup, interfaceversion) {
-    return `Service:${interfacename}#${interfacegroup}@${interfaceversion}`;
+function getProviderServiceChunkId(interfacename, interfacegroup) {
+    return `Service:${interfacename}#${interfacegroup}`;
 }
 exports.getProviderServiceChunkId = getProviderServiceChunkId;
 function isLoopback(addr) {
